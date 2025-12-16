@@ -81,7 +81,7 @@ export default function HomePage() {
             {/* Text */}
             <div className="md:w-1/2">
               <p className="mb-3 inline-flex items-center gap-2 rounded-full bg-slate-900/5 px-3 py-1 text-xs font-medium text-slate-700 ring-1 ring-slate-200">
-                NFPA 96 aligned • Fire safety focused • New Jersey
+                NFPA Code 96 Certified • Insured • Fire Safety Focused
               </p>
 
               <h1 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
@@ -92,10 +92,9 @@ export default function HomePage() {
               </h1>
 
               <p className="mt-4 max-w-xl text-sm text-slate-600 sm:text-base">
-                We clean your kitchen exhaust system, appliances and more in
-                accordance with NFPA Code 96 and local fire marshal
-                requirements. Our ultimate goal is the safety and security of
-                your customers, staff, and business.
+                We work in accordance with NFPA Code 96 and local requirements.
+                Our ultimate goal is the safety and security of your customers,
+                staff, and business.
               </p>
 
               <div className="mt-6 flex flex-wrap items-center gap-3">
@@ -117,13 +116,7 @@ export default function HomePage() {
               <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
                 <StatPill label="Exhaust systems" sub="Hoods • ducts • fans" />
                 <StatPill label="Appliance cleaning" sub="Detail-focused results" />
-                <StatPill label="Safety & compliance" sub="NFPA 96 aligned" />
-              </div>
-
-              {/* Training badge */}
-              <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs text-slate-700">
-                <span className="h-1.5 w-1.5 rounded-full bg-slate-900" />
-                Training: MFS Trade School
+                <StatPill label="Safety & compliance" sub="NFPA Code 96 certified" />
               </div>
             </div>
 
@@ -174,7 +167,7 @@ export default function HomePage() {
                       ) : (
                         <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
                           <p className="text-sm font-semibold text-slate-900">
-                            What we clean
+                            What we do
                           </p>
                           <p className="mt-1 text-xs text-slate-600">
                             Commercial kitchen exhaust systems and appliances.
@@ -187,7 +180,7 @@ export default function HomePage() {
                               <Dot /> Grease removal with safety-first standards.
                             </li>
                             <li className="flex items-start gap-2">
-                              <Dot /> Service aligned with NFPA 96 and local requirements.
+                              <Dot /> Work aligned with NFPA Code 96 and local requirements.
                             </li>
                           </ul>
                         </div>
@@ -246,8 +239,7 @@ export default function HomePage() {
 
           <div className="mt-10 rounded-2xl border border-slate-200 bg-slate-50 p-6">
             <p className="text-sm text-slate-700">
-              We clean your kitchen exhaust system, appliances and more in
-              accordance with NFPA Code 96 and local fire marshal requirements.
+              We work in accordance with NFPA Code 96 and local requirements.
               Our ultimate goal is the safety and security of your customers,
               staff, and business.
             </p>
@@ -271,18 +263,16 @@ export default function HomePage() {
           </div>
 
           <div className="grid gap-6 md:grid-cols-2">
-            {/* NEW IMAGE */}
+            {/* USE ONLY CLEAN/OWNED IMAGES */}
             <WorkCard
-              imgSrc="/images/hood-line.jpg"
-              title="Commercial Hood & Line"
-              desc="Cleaned with safety-first standards and consistent quality."
+              imgSrc="/images/work-1.jpeg"
+              title="Hood & Line Cleaning"
+              desc="Professional results focused on safety and consistency."
             />
-
-            {/* Keep this one as backup or replace later */}
             <WorkCard
               imgSrc="/images/work-2.jpeg"
-              title="Commercial Kitchen Cleaning"
-              desc="Professional service built around integrity and excellence."
+              title="Exhaust System Service"
+              desc="Detail-focused service aligned with local requirements."
             />
           </div>
         </Container>
@@ -315,16 +305,16 @@ export default function HomePage() {
 
             <div className="space-y-3 text-sm text-slate-700">
               <FeatureItem
-                title="Safety & compliance focused"
-                description="Work aligned with NFPA Code 96 and local requirements."
+                title="NFPA Code 96 certified"
+                description="Fire-safety focused service aligned with local requirements."
               />
               <FeatureItem
                 title="Specialized commercial cleaning"
                 description="Exhaust systems, hoods, and appliance cleaning for commercial kitchens."
               />
               <FeatureItem
-                title="Excellence & integrity"
-                description="Built on doing the job properly to help keep people and property safe."
+                title="Insured"
+                description="Professional, reliable service you can trust."
               />
             </div>
           </div>
