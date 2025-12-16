@@ -45,7 +45,7 @@ export default function HomePage() {
                   Mission Cleaning Company
                 </p>
                 <p className="text-xs text-slate-500">
-                  Residential & Commercial Cleaning
+                  Commercial Kitchen Exhaust Systems • Hoods • Appliances
                 </p>
               </div>
             </div>
@@ -81,20 +81,21 @@ export default function HomePage() {
             {/* Text */}
             <div className="md:w-1/2">
               <p className="mb-3 inline-flex items-center gap-2 rounded-full bg-slate-900/5 px-3 py-1 text-xs font-medium text-slate-700 ring-1 ring-slate-200">
-                Reliable cleaning services across New Jersey
+                NFPA 96 aligned • Fire safety focused • New Jersey
               </p>
 
               <h1 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
-                Residential & commercial cleaning
+                Kitchen Exhaust Hood Cleaning
                 <span className="block text-slate-500">
-                  done with excellence and integrity.
+                  cleaner systems. safer businesses.
                 </span>
               </h1>
 
               <p className="mt-4 max-w-xl text-sm text-slate-600 sm:text-base">
-                Mission Cleaning Company delivers dependable general cleaning
-                for homes and businesses, plus specialized services when your
-                space needs a higher standard of detail and safety.
+                We clean your kitchen exhaust system, appliances and more in
+                accordance with NFPA Code 96 and local fire marshal
+                requirements. Our ultimate goal is the safety and security of
+                your customers, staff, and business.
               </p>
 
               <div className="mt-6 flex flex-wrap items-center gap-3">
@@ -112,11 +113,17 @@ export default function HomePage() {
                 </a>
               </div>
 
-              {/* Quick trust highlights (general, not restaurant-only) */}
+              {/* Quick trust highlights */}
               <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
-                <StatPill label="Residential cleaning" sub="Recurring & deep clean" />
-                <StatPill label="Commercial cleaning" sub="Offices & facilities" />
-                <StatPill label="Specialty services" sub="Kitchen exhaust & more" />
+                <StatPill label="Exhaust systems" sub="Hoods • ducts • fans" />
+                <StatPill label="Appliance cleaning" sub="Detail-focused results" />
+                <StatPill label="Safety & compliance" sub="NFPA 96 aligned" />
+              </div>
+
+              {/* Training badge */}
+              <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs text-slate-700">
+                <span className="h-1.5 w-1.5 rounded-full bg-slate-900" />
+                Training: MFS Trade School
               </div>
             </div>
 
@@ -125,14 +132,16 @@ export default function HomePage() {
               <div className="relative">
                 <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-3xl bg-slate-300/60 blur-xl" />
                 <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl">
-                  <div className="h-64 bg-[url('/images/work-1.jpeg')] bg-cover bg-center grayscale sm:h-80" />
+                  {/* HERO IMAGE */}
+                  <div className="h-64 bg-[url('/images/hero-kitchen.jpg')] bg-cover bg-center grayscale sm:h-80" />
 
                   <div className="border-t border-slate-200 bg-white p-4">
                     <div className="flex flex-wrap items-center justify-between gap-3">
                       <div className="flex flex-wrap gap-2">
-                        <Badge>Residential</Badge>
-                        <Badge>Commercial</Badge>
-                        <Badge>Detail-focused</Badge>
+                        <Badge>Hoods</Badge>
+                        <Badge>Ducts</Badge>
+                        <Badge>Exhaust fans</Badge>
+                        <Badge>Appliances</Badge>
                       </div>
 
                       <div className="flex items-center gap-2">
@@ -165,20 +174,20 @@ export default function HomePage() {
                       ) : (
                         <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
                           <p className="text-sm font-semibold text-slate-900">
-                            What we do
+                            What we clean
                           </p>
                           <p className="mt-1 text-xs text-slate-600">
-                            General cleaning plus specialized services when needed.
+                            Commercial kitchen exhaust systems and appliances.
                           </p>
                           <ul className="mt-3 space-y-1.5 text-xs text-slate-700">
                             <li className="flex items-start gap-2">
-                              <Dot /> Residential: recurring & deep cleaning.
+                              <Dot /> Hoods, ductwork & exhaust fans.
                             </li>
                             <li className="flex items-start gap-2">
-                              <Dot /> Commercial: offices and business spaces.
+                              <Dot /> Grease removal with safety-first standards.
                             </li>
                             <li className="flex items-start gap-2">
-                              <Dot /> Specialty: kitchen exhaust systems & appliances.
+                              <Dot /> Service aligned with NFPA 96 and local requirements.
                             </li>
                           </ul>
                         </div>
@@ -200,47 +209,43 @@ export default function HomePage() {
               Main Services
             </h2>
             <p className="mt-2 text-sm text-slate-600">
-              Clear, consistent cleaning for homes and businesses, with specialty
-              options available for specific environments.
+              Commercial kitchen exhaust system cleaning and appliance-focused
+              cleaning, built around safety and consistent results.
             </p>
           </div>
 
           <div className="grid gap-6 md:grid-cols-3">
             <ServiceCard
-              title="Residential Cleaning"
-              description="Routine or one-time cleaning for homes and apartments."
+              title="Kitchen Exhaust Hood Cleaning"
+              description="Professional hood cleaning with detail-focused results."
               bullets={[
-                "Recurring cleaning (weekly/biweekly/monthly)",
-                "Deep cleaning options",
-                "Move-in / move-out support",
+                "Hoods and canopy areas",
+                "Grease removal and cleanup",
+                "Safety-first service standards",
               ]}
             />
             <ServiceCard
-              title="Commercial Cleaning"
-              description="Professional cleaning for offices and commercial spaces."
+              title="Exhaust System Cleaning"
+              description="Cleaning for the full exhaust path to support safer operation."
               bullets={[
-                "Common areas & restrooms",
-                "Break rooms & kitchens",
-                "Reliable scheduling for businesses",
+                "Ductwork and access areas",
+                "Exhaust fan cleaning",
+                "Inspection-ready cleanliness",
               ]}
             />
             <ServiceCard
-              title="Specialty Cleaning"
-              description="Services that require extra attention to detail and safety."
+              title="Appliance Cleaning"
+              description="Commercial kitchen appliances cleaned with a higher standard of detail."
               bullets={[
-                "Commercial kitchen exhaust systems",
-                "Appliance cleaning",
-                "Detail-focused, safety-first approach",
+                "Ranges, fryers, ovens, surfaces",
+                "High-contact areas",
+                "Consistent, repeatable process",
               ]}
             />
           </div>
 
-          {/* Keep the NFPA paragraph EXACT as requested, but as a specialty highlight */}
           <div className="mt-10 rounded-2xl border border-slate-200 bg-slate-50 p-6">
-            <p className="text-sm font-semibold text-slate-900">
-              Specialty service highlight
-            </p>
-            <p className="mt-2 text-sm text-slate-700">
+            <p className="text-sm text-slate-700">
               We clean your kitchen exhaust system, appliances and more in
               accordance with NFPA Code 96 and local fire marshal requirements.
               Our ultimate goal is the safety and security of your customers,
@@ -261,26 +266,29 @@ export default function HomePage() {
               Our Work
             </h2>
             <p className="mt-2 text-sm text-slate-600">
-              A few examples of our work across residential, commercial, and specialty jobs.
+              Examples of commercial kitchen exhaust and appliance cleaning.
             </p>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2">
+            {/* NEW IMAGE */}
             <WorkCard
-              imgSrc="/images/work-1.jpeg"
-              title="Work Example #1"
-              desc="Professional cleaning with consistent, detail-focused results."
+              imgSrc="/images/hood-line.jpg"
+              title="Commercial Hood & Line"
+              desc="Cleaned with safety-first standards and consistent quality."
             />
+
+            {/* Keep this one as backup or replace later */}
             <WorkCard
               imgSrc="/images/work-2.jpeg"
-              title="Work Example #2"
-              desc="Reliable service for spaces that require a higher standard of clean."
+              title="Commercial Kitchen Cleaning"
+              desc="Professional service built around integrity and excellence."
             />
           </div>
         </Container>
       </section>
 
-      {/* ABOUT (texts exactly as you gave) */}
+      {/* ABOUT (texts EXACTOS) */}
       <section
         id="about"
         className="border-t border-slate-200 bg-slate-50 py-12 md:py-16"
@@ -307,16 +315,16 @@ export default function HomePage() {
 
             <div className="space-y-3 text-sm text-slate-700">
               <FeatureItem
-                title="General cleaning, done right"
-                description="Residential and commercial cleaning with consistent quality and clear communication."
+                title="Safety & compliance focused"
+                description="Work aligned with NFPA Code 96 and local requirements."
               />
               <FeatureItem
-                title="Specialty expertise"
-                description="Commercial kitchen exhaust systems and appliance cleaning when your environment requires it."
+                title="Specialized commercial cleaning"
+                description="Exhaust systems, hoods, and appliance cleaning for commercial kitchens."
               />
               <FeatureItem
                 title="Excellence & integrity"
-                description="Founded on doing the job properly with respect for people, property, and safety."
+                description="Built on doing the job properly to help keep people and property safe."
               />
             </div>
           </div>
@@ -335,7 +343,8 @@ export default function HomePage() {
                 Request a free estimate
               </h2>
               <p className="mt-2 text-sm text-slate-600">
-                Tell us what you need and we&apos;ll respond with a free, no-obligation estimate.
+                Tell us what you need and we&apos;ll respond with a free,
+                no-obligation estimate.
               </p>
 
               <div className="mt-4 space-y-1 text-sm text-slate-700">
@@ -364,15 +373,14 @@ export default function HomePage() {
                   What to include in your request:
                 </p>
                 <ul className="mt-2 space-y-1 text-xs text-slate-600">
-                  <li>• Residential or commercial</li>
-                  <li>• Type of cleaning needed</li>
-                  <li>• Preferred date range</li>
-                  <li>• Any special instructions (including kitchen exhaust if applicable)</li>
+                  <li>• Business name & location</li>
+                  <li>• Hood / duct / fan cleaning request</li>
+                  <li>• Appliance cleaning (if needed)</li>
+                  <li>• Preferred date range / inspection deadlines</li>
                 </ul>
               </div>
             </div>
 
-            {/* Form (sends email via /api/contact) */}
             <form
               className="space-y-4 rounded-2xl border border-slate-200 bg-slate-50 p-5 shadow-sm"
               onSubmit={async (e) => {
@@ -461,11 +469,9 @@ export default function HomePage() {
                     name="serviceType"
                     className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:border-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-900"
                   >
-                    <option>Residential cleaning</option>
-                    <option>Commercial cleaning</option>
-                    <option>Deep cleaning</option>
-                    <option>Move-in / Move-out</option>
-                    <option>Kitchen exhaust & appliances (specialty)</option>
+                    <option>Kitchen exhaust hood cleaning</option>
+                    <option>Exhaust system cleaning (ductwork/fans)</option>
+                    <option>Appliance cleaning</option>
                     <option>Other</option>
                   </select>
                 </div>
@@ -473,13 +479,13 @@ export default function HomePage() {
 
               <div>
                 <label className="mb-1 block text-xs font-semibold text-slate-700">
-                  Address / business name (optional)
+                  Business name / location
                 </label>
                 <input
                   name="business"
                   type="text"
                   className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:border-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-900"
-                  placeholder="City, business name, or neighborhood"
+                  placeholder="Restaurant / facility name + city"
                 />
               </div>
 
@@ -491,7 +497,7 @@ export default function HomePage() {
                   name="message"
                   required
                   className="h-24 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:border-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-900"
-                  placeholder="Tell us what you need, timeline, and any special requests…"
+                  placeholder="Tell us what you need, timeline, inspection deadlines, etc."
                 />
               </div>
 
@@ -528,7 +534,7 @@ export default function HomePage() {
           <div className="py-6 text-xs text-slate-500">
             <div className="flex flex-col items-center justify-between gap-2 md:flex-row">
               <p>© {new Date().getFullYear()} Mission Cleaning Company.</p>
-              <p>General Cleaning Services | New Jersey</p>
+              <p>Commercial Cleaning Services | New Jersey</p>
             </div>
 
             <div className="mt-5 flex items-center justify-center">
