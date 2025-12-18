@@ -65,27 +65,27 @@ export default function HomePage() {
         </Container>
       </header>
 
-      {/* HERO (Premium + Banner integrado SIN romper el flow) */}
+      {/* HERO */}
       <section className="bg-gradient-to-b from-white to-slate-100">
         <Container>
           <div className="py-10 md:py-14">
             <div className="grid gap-10 md:grid-cols-2 md:items-center">
               {/* Left */}
               <div>
-                {/* Banner logo integrado (no flotante gigante) */}
-                <div className="mb-4">
+                {/* BANNER (Opción 2: hack para “zoom” aunque el PNG tenga padding) */}
+                <div className="mb-4 w-full max-w-[560px] md:max-w-[640px] overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
                   <img
                     src="/images/mission-banner.png"
+                    alt="Mission Cleaning Company banner"
                     onError={(e) => {
                       (e.currentTarget as HTMLImageElement).src =
                         "/images/logo.png";
                     }}
-                    alt="Mission Cleaning Company banner"
-                    className="h-12 w-auto max-w-full object-contain md:h-14"
+                    className="h-16 w-full object-cover object-center scale-[2.2] md:h-20"
                   />
                 </div>
 
-                {/* Pills (solo una fila, no spam) */}
+                {/* Pills */}
                 <div className="mb-4 flex flex-wrap gap-2">
                   <Pill>NFPA Code 96 Certified</Pill>
                   <Pill>Insured</Pill>
@@ -271,7 +271,7 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* OUR WORK (images only) */}
+      {/* OUR WORK */}
       <section
         id="work"
         className="border-t border-slate-200 bg-white py-12 md:py-16"
@@ -291,7 +291,7 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* CONTACT (FORM RESTAURADO) */}
+      {/* CONTACT */}
       <section
         id="contact"
         className="border-t border-slate-200 bg-white py-12 md:py-16"
@@ -321,9 +321,6 @@ export default function HomePage() {
                   >
                     missioncleaningcomp@gmail.com
                   </a>
-                </p>
-                <p>
-                  <span className="font-semibold">Service area:</span> New Jersey and surrounding areas.
                 </p>
               </div>
             </div>
@@ -503,6 +500,8 @@ export default function HomePage() {
   );
 }
 
+/* UI bits */
+
 function Pill({ children }: { children: ReactNode }) {
   return (
     <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[11px] font-medium text-slate-700">
@@ -562,7 +561,11 @@ function ServiceCard({
 function WorkImageOnly({ imgSrc }: { imgSrc: string }) {
   return (
     <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-      <img src={imgSrc} alt="Work photo" className="h-72 w-full object-cover grayscale" />
+      <img
+        src={imgSrc}
+        alt="Work photo"
+        className="h-72 w-full object-cover grayscale"
+      />
     </div>
   );
 }
