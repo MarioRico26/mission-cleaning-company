@@ -1,595 +1,147 @@
-"use client";
-
-import { useEffect, useMemo, useState } from "react";
-import type { ReactNode } from "react";
-
-function Container({ children }: { children: ReactNode }) {
-  return <div className="mx-auto max-w-6xl px-4">{children}</div>;
-}
-
 export default function HomePage() {
-  const [heroPanel, setHeroPanel] = useState<"logo" | "info">("logo");
-
-  const [status, setStatus] = useState<
-    "idle" | "sending" | "success" | "error"
-  >("idle");
-
-  const statusCopy = useMemo(() => {
-    if (status === "sending") return "Sending…";
-    if (status === "success") return "Sent! We’ll get back to you soon.";
-    if (status === "error") return "Error sending message. Please try again.";
-    return "";
-  }, [status]);
-
-  useEffect(() => {
-    const id = setInterval(() => {
-      setHeroPanel((p) => (p === "logo" ? "info" : "logo"));
-    }, 4500);
-    return () => clearInterval(id);
-  }, []);
-
   return (
-    <main className="flex min-h-screen flex-col bg-white text-slate-900">
-      {/* TOP BAR / HEADER */}
-      <header className="border-b border-slate-200 bg-white">
-        <Container>
-          <div className="flex items-center justify-between py-4">
-            {/* Logo Banner (preferido) */}
-            <div className="flex items-center gap-3">
-              <img
-                src="/images/logo-banner.png"
-                onError={(e) => {
-                  // fallback si no existe logo-banner.png
-                  (e.currentTarget as HTMLImageElement).src = "/images/logo.png";
-                }}
-                alt="Mission Cleaning Company"
-                className="h-12 w-auto object-contain sm:h-14"
-              />
-            </div>
+    <main className="w-full text-neutral-900 bg-white">
 
-            <nav className="hidden items-center gap-6 text-sm text-slate-600 md:flex">
-              <a href="#about" className="hover:text-slate-900">
-                About
-              </a>
-              <a href="#services" className="hover:text-slate-900">
-                Services
-              </a>
-              <a href="#work" className="hover:text-slate-900">
-                Our Work
-              </a>
-              <a href="#contact" className="hover:text-slate-900">
-                Contact
-              </a>
-              <a
-                href="#contact"
-                className="rounded-full border border-slate-900 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-slate-900 hover:bg-slate-900 hover:text-white"
-              >
-                Get a quote
-              </a>
-            </nav>
-          </div>
-        </Container>
-      </header>
-
-      {/* HERO */}
-      <section className="bg-gradient-to-b from-white to-slate-100">
-        <Container>
-          <div className="flex flex-col gap-10 py-10 md:flex-row md:items-center md:py-16">
-            {/* Text */}
-            <div className="md:w-1/2">
-              <p className="mb-3 inline-flex items-center gap-2 rounded-full bg-slate-900/5 px-3 py-1 text-xs font-medium text-slate-700 ring-1 ring-slate-200">
-                NFPA Code 96 Certified • Insured • Fire Safety Focused
-              </p>
-
-              <h1 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
-                Kitchen Exhaust Hood Cleaning
-                <span className="block text-slate-500">
-                  cleaner systems. safer businesses.
-                </span>
-              </h1>
-
-              <p className="mt-4 max-w-xl text-sm text-slate-600 sm:text-base">
-                We work in accordance with NFPA Code 96 and local requirements.
-                Our ultimate goal is the safety and security of your customers,
-                staff, and business.
-              </p>
-
-              <div className="mt-6 flex flex-wrap items-center gap-3">
-                <a
-                  href="#contact"
-                  className="rounded-full bg-slate-900 px-6 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-black"
-                >
-                  Request a free estimate
-                </a>
-                <a
-                  href="tel:609-709-7997"
-                  className="text-sm font-medium text-slate-800 underline-offset-4 hover:underline"
-                >
-                  Call us: 609-709-7997
-                </a>
-              </div>
-
-              <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
-                <StatPill label="Kitchen hoods" sub="Commercial systems" />
-                <StatPill label="Appliance cleaning" sub="Detail-focused results" />
-                <StatPill label="Safety & compliance" sub="NFPA Code 96 certified" />
-              </div>
-            </div>
-
-            {/* Visual */}
-            <div className="md:w-1/2">
-              <div className="relative">
-                <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-3xl bg-slate-300/60 blur-xl" />
-                <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl">
-                  <div className="h-64 bg-[url('/images/hero-kitchen.jpg')] bg-cover bg-center grayscale sm:h-80" />
-
-                  <div className="border-t border-slate-200 bg-white p-4">
-                    <div className="flex flex-wrap items-center justify-between gap-3">
-                      <div className="flex flex-wrap gap-2">
-                        <Badge>Hoods</Badge>
-                        <Badge>Appliances</Badge>
-                        <Badge>Inspections</Badge>
-                      </div>
-
-                      <div className="flex items-center gap-2">
-                        <span
-                          className={`h-1.5 w-1.5 rounded-full transition ${
-                            heroPanel === "logo"
-                              ? "bg-slate-900"
-                              : "bg-slate-300"
-                          }`}
-                        />
-                        <span
-                          className={`h-1.5 w-1.5 rounded-full transition ${
-                            heroPanel === "info"
-                              ? "bg-slate-900"
-                              : "bg-slate-300"
-                          }`}
-                        />
-                      </div>
-                    </div>
-
-                    <div className="mt-4">
-                      {heroPanel === "logo" ? (
-                        <div className="flex items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 p-6">
-                          <img
-                            src="/images/logo.png"
-                            alt="Mission Cleaning Company logo"
-                            className="h-20 w-auto object-contain grayscale sm:h-24"
-                          />
-                        </div>
-                      ) : (
-                        <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
-                          <p className="text-sm font-semibold text-slate-900">
-                            What we do
-                          </p>
-                          <p className="mt-1 text-xs text-slate-600">
-                            Commercial kitchen hood cleaning, appliance cleaning,
-                            and safety inspections.
-                          </p>
-                          <ul className="mt-3 space-y-1.5 text-xs text-slate-700">
-                            <li className="flex items-start gap-2">
-                              <Dot /> Hood cleaning aligned with NFPA Code 96.
-                            </li>
-                            <li className="flex items-start gap-2">
-                              <Dot /> Appliance cleaning with detail-first results.
-                            </li>
-                            <li className="flex items-start gap-2">
-                              <Dot /> On-site inspections for safety & compliance.
-                            </li>
-                          </ul>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Container>
+      {/* ================= HERO / LOGO BANNER ================= */}
+      <section className="w-full border-b bg-white">
+        <div className="max-w-7xl mx-auto px-4 py-10 flex justify-center">
+          <img
+            src="/images/mission-logo-banner.png"
+            alt="Mission Cleaning Company"
+            className="w-full max-w-5xl object-contain"
+          />
+        </div>
       </section>
 
-      {/* ABOUT (moved up) */}
-      <section id="about" className="bg-white py-12 md:py-16">
-        <Container>
-          <div className="grid gap-8 md:grid-cols-2 md:items-start">
-            <div>
-              <h2 className="text-2xl font-semibold text-slate-900 md:text-3xl">
-                About Mission Cleaning Company
-              </h2>
+      {/* ================= ABOUT (TOP) ================= */}
+      <section className="max-w-6xl mx-auto px-4 py-12">
+        <h2 className="text-3xl font-semibold mb-4">
+          About Mission Cleaning Company
+        </h2>
 
-              <p className="mt-3 text-sm text-slate-600">
-                Mission Cleaning Company is a full-service cleaning company specializing in commercial kitchen exhaust systems and appliances.
-              </p>
+        <p className="text-lg text-neutral-700 mb-4">
+          Mission Cleaning Company is a full-service commercial cleaning company
+          specializing in kitchen exhaust systems, hoods, and appliances.
+        </p>
 
-              <p className="mt-2 text-sm text-slate-600">
-                Founded and built on excellence and integrity with the ultimate goal of keeping people and property safe.
-              </p>
+        <p className="text-neutral-700 mb-4">
+          Founded and built on excellence and integrity with the ultimate goal of
+          keeping people and property safe.
+        </p>
 
-              <p className="mt-2 text-sm text-slate-600">
-                We look forward to the opportunity to meet and exceed your expectations with our impeccable service.
-              </p>
-            </div>
+        <p className="text-neutral-700">
+          We work in accordance with NFPA Code 96 and local requirements to ensure
+          safety, compliance, and inspection-ready results.
+        </p>
 
-            <div className="space-y-3 text-sm text-slate-700">
-              <FeatureItem
-                title="NFPA Code 96 certified"
-                description="Fire-safety focused service aligned with local requirements."
-              />
-              <FeatureItem
-                title="Insured"
-                description="Professional, reliable service you can trust."
-              />
-              <FeatureItem
-                title="Safety first"
-                description="Focused on reducing risk and supporting compliance."
-              />
-            </div>
-          </div>
-        </Container>
+        <div className="mt-6 inline-flex items-center gap-3 rounded-full border px-4 py-2 text-sm font-medium">
+          NFPA Code 96 Certified · Insured · Fire Safety Focused
+        </div>
       </section>
 
-      {/* SERVICES (updated) */}
-      <section
-        id="services"
-        className="border-t border-slate-200 bg-slate-50 py-12 md:py-16"
-      >
-        <Container>
-          <div className="mb-8 max-w-2xl">
-            <h2 className="text-2xl font-semibold text-slate-900 md:text-3xl">
-              Main Services
-            </h2>
-            <p className="mt-2 text-sm text-slate-600">
-              Commercial kitchen services built around safety and consistent results.
+      {/* ================= SERVICES ================= */}
+      <section className="max-w-6xl mx-auto px-4 py-12">
+        <h2 className="text-3xl font-semibold mb-8">Main Services</h2>
+
+        <div className="grid gap-6 md:grid-cols-2">
+
+          {/* Kitchen Exhaust Hood Cleaning */}
+          <div className="rounded-xl border p-6">
+            <h3 className="text-xl font-semibold mb-2">
+              Kitchen Exhaust Hood Cleaning
+            </h3>
+            <p className="text-neutral-700 mb-4">
+              Professional hood cleaning with detail-focused results.
+            </p>
+            <ul className="list-disc pl-5 text-neutral-700 space-y-1">
+              <li>Hoods and canopy areas</li>
+              <li>Grease removal and cleanup</li>
+              <li>Safety-first service standards</li>
+            </ul>
+          </div>
+
+          {/* Appliance Cleaning */}
+          <div className="rounded-xl border p-6">
+            <h3 className="text-xl font-semibold mb-2">
+              Appliance Cleaning
+            </h3>
+            <p className="text-neutral-700 mb-4">
+              Commercial kitchen appliances cleaned to a higher standard of detail.
+            </p>
+            <ul className="list-disc pl-5 text-neutral-700 space-y-1">
+              <li>Ranges, fryers, ovens, surfaces</li>
+              <li>High-contact areas</li>
+              <li>Consistent, repeatable process</li>
+            </ul>
+          </div>
+
+          {/* Safety & Compliance Inspections */}
+          <div className="rounded-xl border p-6 md:col-span-2">
+            <h3 className="text-xl font-semibold mb-2">
+              Safety & Compliance Inspections
+            </h3>
+            <p className="text-neutral-700">
+              On-site inspection of new and existing commercial kitchen exhaust
+              systems to ensure safety and compliance in accordance with NFPA Code 96.
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-3">
-            <ServiceCard
-              title="Kitchen Exhaust Hood Cleaning"
-              description="Professional hood cleaning with detail-focused results."
-              bullets={[
-                "Hoods and canopy areas",
-                "Grease removal and cleanup",
-                "Safety-first service standards",
-              ]}
-            />
-
-            {/* Removed Exhaust System Cleaning */}
-
-            <ServiceCard
-              title="Safety & Compliance Inspections"
-              description="On-site inspection of new and existing commercial kitchen exhaust systems to ensure safety and compliance in accordance with NFPA Code 96."
-              bullets={[
-                "On-site safety review",
-                "Compliance-focused inspection",
-                "Recommendations and next steps",
-              ]}
-            />
-
-            <ServiceCard
-              title="Appliance Cleaning"
-              description="Commercial kitchen appliances cleaned with a higher standard of detail."
-              bullets={[
-                "Ranges, fryers, ovens, surfaces",
-                "High-contact areas",
-                "Consistent, repeatable process",
-              ]}
-            />
-          </div>
-
-          <div className="mt-10 rounded-2xl border border-slate-200 bg-white p-6">
-            <p className="text-sm text-slate-700">
-              We work in accordance with NFPA Code 96 and local requirements.
-              Our ultimate goal is the safety and security of your customers,
-              staff, and business.
-            </p>
-          </div>
-        </Container>
+        </div>
       </section>
 
-      {/* OUR WORK (no text blocks under pictures) */}
-      <section
-        id="work"
-        className="border-t border-slate-200 bg-white py-12 md:py-16"
-      >
-        <Container>
-          <div className="mb-8 max-w-2xl">
-            <h2 className="text-2xl font-semibold text-slate-900 md:text-3xl">
-              Our Work
-            </h2>
-            <p className="mt-2 text-sm text-slate-600">
-              Examples of our work.
-            </p>
-          </div>
+      {/* ================= OUR WORK (IMAGES ONLY) ================= */}
+      <section className="max-w-6xl mx-auto px-4 py-12">
+        <h2 className="text-3xl font-semibold mb-6">Our Work</h2>
 
-          <div className="grid gap-6 md:grid-cols-2">
-            <WorkImageOnly imgSrc="/images/work-1.jpeg" />
-            <WorkImageOnly imgSrc="/images/work-2.jpeg" />
-          </div>
-        </Container>
+        <div className="grid gap-6 md:grid-cols-2">
+          <img
+            src="/images/work-1.jpg"
+            alt="Commercial kitchen exhaust hood cleaning"
+            className="rounded-xl object-cover w-full h-[300px]"
+          />
+          <img
+            src="/images/work-2.jpg"
+            alt="Commercial kitchen hood and appliance cleaning"
+            className="rounded-xl object-cover w-full h-[300px]"
+          />
+        </div>
       </section>
 
-      {/* CONTACT */}
-      <section
-        id="contact"
-        className="border-t border-slate-200 bg-white py-12 md:py-16"
-      >
-        <Container>
-          <div className="grid gap-10 md:grid-cols-2 md:items-start">
-            <div>
-              <h2 className="text-2xl font-semibold text-slate-900 md:text-3xl">
-                Request a free estimate
-              </h2>
-              <p className="mt-2 text-sm text-slate-600">
-                Tell us what you need and we&apos;ll respond with a free,
-                no-obligation estimate.
-              </p>
+      {/* ================= CTA ================= */}
+      <section className="bg-neutral-900 text-white">
+        <div className="max-w-6xl mx-auto px-4 py-12 text-center">
+          <h2 className="text-3xl font-semibold mb-4">
+            Request a Free Estimate
+          </h2>
+          <p className="mb-6">
+            Serving commercial kitchens across New Jersey.
+          </p>
+          <a
+            href="tel:6097097997"
+            className="inline-block rounded-full bg-white text-neutral-900 px-8 py-3 font-medium"
+          >
+            Call 609-709-7997
+          </a>
+        </div>
+      </section>
 
-              <div className="mt-4 space-y-1 text-sm text-slate-700">
-                <p>
-                  <span className="font-semibold">Phone:</span>{" "}
-                  <a className="hover:underline" href="tel:609-709-7997">
-                    609-709-7997
-                  </a>
-                </p>
-                <p>
-                  <span className="font-semibold">Email:</span>{" "}
-                  <a
-                    className="hover:underline"
-                    href="mailto:missioncleaningcomp@gmail.com"
-                  >
-                    missioncleaningcomp@gmail.com
-                  </a>
-                </p>
-                <p>
-                  <span className="font-semibold">Service area:</span> New Jersey and surrounding areas.
-                </p>
-              </div>
-            </div>
-
-            <form
-              className="space-y-4 rounded-2xl border border-slate-200 bg-slate-50 p-5 shadow-sm"
-              onSubmit={async (e) => {
-                e.preventDefault();
-                if (status === "sending") return;
-
-                setStatus("sending");
-
-                const form = e.currentTarget;
-                const fd = new FormData(form);
-
-                const payload = {
-                  name: String(fd.get("name") || "").trim(),
-                  email: String(fd.get("email") || "").trim(),
-                  phone: String(fd.get("phone") || "").trim(),
-                  serviceType: String(fd.get("serviceType") || "").trim(),
-                  business: String(fd.get("business") || "").trim(),
-                  message: String(fd.get("message") || "").trim(),
-                };
-
-                try {
-                  const res = await fetch("/api/contact", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(payload),
-                  });
-
-                  if (res.ok) {
-                    form.reset();
-                    setStatus("success");
-                    setTimeout(() => setStatus("idle"), 5000);
-                  } else {
-                    setStatus("error");
-                    setTimeout(() => setStatus("idle"), 5000);
-                  }
-                } catch {
-                  setStatus("error");
-                  setTimeout(() => setStatus("idle"), 5000);
-                }
-              }}
+      {/* ================= FOOTER ================= */}
+      <footer className="border-t">
+        <div className="max-w-6xl mx-auto px-4 py-6 text-center text-sm text-neutral-600">
+          <p>Mission Cleaning Company · New Jersey</p>
+          <p className="mt-2">
+            Proudly designed by{" "}
+            <a
+              href="https://www.bytenetworks.net"
+              target="_blank"
+              className="font-medium underline"
             >
-              <div className="grid gap-3 md:grid-cols-2">
-                <div>
-                  <label className="mb-1 block text-xs font-semibold text-slate-700">
-                    Full name
-                  </label>
-                  <input
-                    name="name"
-                    required
-                    type="text"
-                    className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:border-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-900"
-                    placeholder="John Doe"
-                  />
-                </div>
-                <div>
-                  <label className="mb-1 block text-xs font-semibold text-slate-700">
-                    Email
-                  </label>
-                  <input
-                    name="email"
-                    required
-                    type="email"
-                    className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:border-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-900"
-                    placeholder="you@example.com"
-                  />
-                </div>
-              </div>
-
-              <div className="grid gap-3 md:grid-cols-2">
-                <div>
-                  <label className="mb-1 block text-xs font-semibold text-slate-700">
-                    Phone
-                  </label>
-                  <input
-                    name="phone"
-                    type="tel"
-                    className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:border-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-900"
-                    placeholder="(xxx) xxx-xxxx"
-                  />
-                </div>
-                <div>
-                  <label className="mb-1 block text-xs font-semibold text-slate-700">
-                    Service type
-                  </label>
-                  <select
-                    name="serviceType"
-                    className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:border-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-900"
-                  >
-                    <option>Kitchen exhaust hood cleaning</option>
-                    <option>Safety & compliance inspections</option>
-                    <option>Appliance cleaning</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-              </div>
-
-              <div>
-                <label className="mb-1 block text-xs font-semibold text-slate-700">
-                  Business name / location
-                </label>
-                <input
-                  name="business"
-                  type="text"
-                  className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:border-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-900"
-                  placeholder="Restaurant / facility name + city"
-                />
-              </div>
-
-              <div>
-                <label className="mb-1 block text-xs font-semibold text-slate-700">
-                  Details
-                </label>
-                <textarea
-                  name="message"
-                  required
-                  className="h-24 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:border-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-900"
-                  placeholder="Tell us what you need, timeline, inspection deadlines, etc."
-                />
-              </div>
-
-              <button
-                type="submit"
-                disabled={status === "sending"}
-                className={`w-full rounded-full py-2.5 text-sm font-semibold text-white transition ${
-                  status === "sending"
-                    ? "bg-slate-700 cursor-not-allowed"
-                    : "bg-slate-900 hover:bg-black"
-                }`}
-              >
-                {status === "sending" ? "Sending…" : "Submit request"}
-              </button>
-
-              {status !== "idle" && (
-                <div className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs text-slate-700">
-                  {statusCopy}
-                </div>
-              )}
-            </form>
-          </div>
-        </Container>
-      </section>
-
-      {/* FOOTER */}
-      <footer className="border-t border-slate-200 bg-white">
-        <Container>
-          <div className="py-6 text-xs text-slate-500">
-            <div className="flex flex-col items-center justify-between gap-2 md:flex-row">
-              <p>© {new Date().getFullYear()} Mission Cleaning Company.</p>
-              <p>Commercial Cleaning Services | New Jersey</p>
-            </div>
-
-            <div className="mt-5 flex items-center justify-center">
-              <a
-                href="https://www.bytenetworks.net/"
-                target="_blank"
-                rel="noreferrer"
-                className="group relative inline-flex items-center gap-3 rounded-full border border-slate-200 bg-gradient-to-b from-white to-slate-50 px-5 py-2 shadow-sm"
-              >
-                <span className="absolute inset-0 rounded-full opacity-0 blur-lg transition group-hover:opacity-100 bg-slate-200/60" />
-                <span className="relative h-2 w-2 rounded-full bg-slate-900" />
-                <span className="relative text-[11px] tracking-[0.14em] uppercase text-slate-600">
-                  Proudly Created by
-                </span>
-                <span className="relative text-[11px] font-semibold tracking-wide text-slate-900">
-                  Byte Networks
-                </span>
-              </a>
-            </div>
-          </div>
-        </Container>
+              Byte Networks
+            </a>
+          </p>
+        </div>
       </footer>
+
     </main>
-  );
-}
-
-function StatPill({ label, sub }: { label: string; sub: string }) {
-  return (
-    <div className="rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-sm">
-      <p className="text-xs font-semibold text-slate-900">{label}</p>
-      <p className="mt-1 text-[11px] text-slate-500">{sub}</p>
-    </div>
-  );
-}
-
-function Badge({ children }: { children: ReactNode }) {
-  return (
-    <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs text-slate-700">
-      {children}
-    </span>
-  );
-}
-
-function Dot() {
-  return (
-    <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-slate-900" />
-  );
-}
-
-function ServiceCard({
-  title,
-  description,
-  bullets,
-}: {
-  title: string;
-  description: string;
-  bullets: string[];
-}) {
-  return (
-    <div className="flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-      <h3 className="text-base font-semibold text-slate-900">{title}</h3>
-      <p className="mt-2 text-sm text-slate-600">{description}</p>
-      <ul className="mt-3 space-y-1.5 text-xs text-slate-600">
-        {bullets.map((b) => (
-          <li key={b} className="flex items-start gap-2">
-            <Dot />
-            <span>{b}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-function WorkImageOnly({ imgSrc }: { imgSrc: string }) {
-  return (
-    <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-      <img src={imgSrc} alt="Work photo" className="h-72 w-full object-cover grayscale" />
-    </div>
-  );
-}
-
-function FeatureItem({
-  title,
-  description,
-}: {
-  title: string;
-  description: string;
-}) {
-  return (
-    <div className="rounded-xl bg-white p-3 ring-1 ring-slate-200">
-      <p className="text-xs font-semibold text-slate-900">{title}</p>
-      <p className="mt-1 text-xs text-slate-600">{description}</p>
-    </div>
-  );
+  )
 }
