@@ -81,7 +81,7 @@ export default function HomePage() {
                       (e.currentTarget as HTMLImageElement).src =
                         "/images/logo.png";
                     }}
-                    className="h-16 w-full object-cover object-center scale-[2.2] md:h-20"
+                    className="h-16 w-full object-cover object-center scale-[2.6] md:h-20"
                   />
                 </div>
 
