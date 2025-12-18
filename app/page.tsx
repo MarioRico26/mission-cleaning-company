@@ -69,29 +69,36 @@ export default function HomePage() {
       <section className="bg-gradient-to-b from-white to-slate-100">
         <Container>
           <div className="py-10 md:py-14">
+            {/* BANNER STRIP (extended across hero) */}
+            <div className="mb-8">
+              <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
+                <div className="absolute inset-0 bg-gradient-to-b from-slate-50 to-white" />
+                <div className="relative px-6 py-6 md:px-10 md:py-7">
+                  <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white">
+                    <img
+                      src="/images/mission-banner.png"
+                      alt="Mission Cleaning Company banner"
+                      onError={(e) => {
+                        (e.currentTarget as HTMLImageElement).src =
+                          "/images/logo.png";
+                      }}
+                      className="h-20 w-full object-cover object-center scale-[1.55] md:h-24"
+                    />
+                  </div>
+
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    <Pill>NFPA Code 96 Certified</Pill>
+                    <Pill>Insured</Pill>
+                    <Pill>Fire Safety Focused</Pill>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* HERO GRID */}
             <div className="grid gap-10 md:grid-cols-2 md:items-center">
               {/* Left */}
               <div>
-                {/* BANNER (Opción 2: hack para “zoom” aunque el PNG tenga padding) */}
-                <div className="mb-4 w-full max-w-[560px] md:max-w-[640px] overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
-                  <img
-                    src="/images/mission-banner.png"
-                    alt="Mission Cleaning Company banner"
-                    onError={(e) => {
-                      (e.currentTarget as HTMLImageElement).src =
-                        "/images/logo.png";
-                    }}
-                    className="h-16 w-full object-cover object-center scale-[2.6] md:h-20"
-                  />
-                </div>
-
-                {/* Pills */}
-                <div className="mb-4 flex flex-wrap gap-2">
-                  <Pill>NFPA Code 96 Certified</Pill>
-                  <Pill>Insured</Pill>
-                  <Pill>Fire Safety Focused</Pill>
-                </div>
-
                 <h1 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
                   Kitchen Exhaust Hood Cleaning
                   <span className="block text-slate-500">
@@ -306,22 +313,39 @@ export default function HomePage() {
                 Tell us what you need and we&apos;ll respond with a free, no-obligation estimate.
               </p>
 
-              <div className="mt-4 space-y-1 text-sm text-slate-700">
-                <p>
-                  <span className="font-semibold">Phone:</span>{" "}
-                  <a className="hover:underline" href="tel:609-709-7997">
-                    609-709-7997
-                  </a>
+              {/* Premium contact card */}
+              <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                  Direct Contact
                 </p>
-                <p>
-                  <span className="font-semibold">Email:</span>{" "}
+
+                <div className="mt-4 grid gap-3 sm:grid-cols-2">
                   <a
-                    className="hover:underline"
-                    href="mailto:missioncleaningcomp@gmail.com"
+                    href="tel:609-709-7997"
+                    className="group flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 hover:bg-white"
                   >
-                    missioncleaningcomp@gmail.com
+                    <span className="h-2 w-2 rounded-full bg-slate-900" />
+                    <div>
+                      <p className="text-xs text-slate-500">Phone</p>
+                      <p className="text-sm font-semibold text-slate-900 group-hover:underline">
+                        609-709-7997
+                      </p>
+                    </div>
                   </a>
-                </p>
+
+                  <a
+                    href="mailto:missioncleaningcomp@gmail.com"
+                    className="group flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 hover:bg-white"
+                  >
+                    <span className="h-2 w-2 rounded-full bg-slate-900" />
+                    <div className="min-w-0">
+                      <p className="text-xs text-slate-500">Email</p>
+                      <p className="truncate text-sm font-semibold text-slate-900 group-hover:underline">
+                        missioncleaningcomp@gmail.com
+                      </p>
+                    </div>
+                  </a>
+                </div>
               </div>
             </div>
 
