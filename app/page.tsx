@@ -4,7 +4,6 @@ import { useMemo, useState } from "react";
 import type { ReactNode } from "react";
 
 function Container({ children }: { children: ReactNode }) {
-  // Más ancho real que antes (max-w-6xl -> max-w-7xl)
   return <div className="mx-auto max-w-7xl px-4">{children}</div>;
 }
 
@@ -70,7 +69,7 @@ export default function HomePage() {
       <section className="bg-gradient-to-b from-white to-slate-100">
         <Container>
           <div className="py-10 md:py-14">
-            {/* BANNER STRIP (más ancho real por el container max-w-7xl) */}
+            {/* BANNER STRIP (más ALTO + email pegado debajo) */}
             <div className="mb-8">
               <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
                 <div className="absolute inset-0 bg-gradient-to-b from-slate-50 to-white" />
@@ -83,10 +82,26 @@ export default function HomePage() {
                         (e.currentTarget as HTMLImageElement).src =
                           "/images/logo.png";
                       }}
-                      className="h-20 w-full object-cover object-center scale-[1.35] md:h-24"
+                      // MÁS ALTO AQUÍ
+                      className="h-28 w-full object-cover object-center md:h-32"
                     />
                   </div>
-                  {/* OJO: Quitamos las pills de aquí (las movimos abajo de la imagen) */}
+
+                  {/* Email como “parte del banner” */}
+                  <div className="mt-4 flex items-center justify-center">
+                    <a
+                      href="mailto:missioncleaningcomp@gmail.com"
+                      className="group inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-5 py-2 shadow-sm hover:bg-slate-50"
+                    >
+                      <span className="h-2 w-2 rounded-full bg-slate-900" />
+                      <span className="text-[11px] uppercase tracking-[0.18em] text-slate-500">
+                        Email
+                      </span>
+                      <span className="text-sm font-semibold text-slate-900 group-hover:underline underline-offset-4">
+                        missioncleaningcomp@gmail.com
+                      </span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -115,12 +130,7 @@ export default function HomePage() {
                   >
                     Request a free estimate
                   </a>
-                  <a
-                    href="tel:609-709-7997"
-                    className="text-sm font-medium text-slate-800 underline-offset-4 hover:underline"
-                  >
-                    Call us: 609-709-7997
-                  </a>
+                  {/* Quitamos el teléfono de aquí para evitar duplicación */}
                 </div>
 
                 <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
@@ -147,47 +157,15 @@ export default function HomePage() {
                       <Badge>Inspections</Badge>
                     </div>
 
-                    {/* MOVIDO: NFPA/Insured/Fire Safety (debajo de las de arriba) */}
+                    {/* Pills de NFPA/Insured/Fire Safety */}
                     <div className="mt-3 flex flex-wrap gap-2">
                       <Pill>NFPA Code 96 Certified</Pill>
                       <Pill>Insured</Pill>
                       <Pill>Fire Safety Focused</Pill>
                     </div>
 
-                    {/* MOVIDO: Email/Phone premium aquí para que parezca parte del hero */}
-                    <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                      <a
-                        href="tel:609-709-7997"
-                        className="group flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 hover:bg-white"
-                      >
-                        <span className="h-2 w-2 rounded-full bg-slate-900" />
-                        <div>
-                          <p className="text-[11px] uppercase tracking-[0.18em] text-slate-500">
-                            Phone
-                          </p>
-                          <p className="text-sm font-semibold text-slate-900 group-hover:underline">
-                            609-709-7997
-                          </p>
-                        </div>
-                      </a>
+                    {/* Quitamos el phone/email de aquí (email ya está bajo banner) */}
 
-                      <a
-                        href="mailto:missioncleaningcomp@gmail.com"
-                        className="group flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 hover:bg-white"
-                      >
-                        <span className="h-2 w-2 rounded-full bg-slate-900" />
-                        <div className="min-w-0">
-                          <p className="text-[11px] uppercase tracking-[0.18em] text-slate-500">
-                            Email
-                          </p>
-                          <p className="truncate text-sm font-semibold text-slate-900 group-hover:underline">
-                            missioncleaningcomp@gmail.com
-                          </p>
-                        </div>
-                      </a>
-                    </div>
-
-                    {/* What we do */}
                     <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-5">
                       <p className="text-sm font-semibold text-slate-900">
                         What we do
@@ -351,17 +329,31 @@ export default function HomePage() {
                 Tell us what you need and we&apos;ll respond with a free, no-obligation estimate.
               </p>
 
-              {/* Aquí lo dejamos simple porque ya pusimos el bloque premium arriba en el hero */}
-              <div className="mt-4 text-sm text-slate-700">
-                <p>
-                  Prefer email?{" "}
-                  <a
-                    className="font-semibold underline-offset-4 hover:underline"
-                    href="mailto:missioncleaningcomp@gmail.com"
-                  >
-                    missioncleaningcomp@gmail.com
-                  </a>
+              {/* Aquí dejamos el teléfono solo una vez, con estilo, y listo */}
+              <div className="mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                  Direct Contact
                 </p>
+                <div className="mt-3 space-y-2 text-sm text-slate-800">
+                  <p>
+                    Phone:{" "}
+                    <a
+                      href="tel:609-709-7997"
+                      className="font-semibold underline-offset-4 hover:underline"
+                    >
+                      609-709-7997
+                    </a>
+                  </p>
+                  <p>
+                    Email:{" "}
+                    <a
+                      href="mailto:missioncleaningcomp@gmail.com"
+                      className="font-semibold underline-offset-4 hover:underline"
+                    >
+                      missioncleaningcomp@gmail.com
+                    </a>
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -436,7 +428,7 @@ export default function HomePage() {
               <div className="grid gap-3 md:grid-cols-2">
                 <div>
                   <label className="mb-1 block text-xs font-semibold text-slate-700">
-                    Phone
+                    Phone (optional)
                   </label>
                   <input
                     name="phone"
