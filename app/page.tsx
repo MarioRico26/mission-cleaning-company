@@ -30,35 +30,32 @@ export default function HomePage() {
 
   return (
     <main className="flex min-h-screen flex-col bg-white text-slate-900">
-      {/* NAVBAR */}
-      <header className="border-b border-slate-200 bg-white/90 backdrop-blur">
+      {/* TOP BAR / HEADER */}
+      <header className="border-b border-slate-200 bg-white">
         <Container>
           <div className="flex items-center justify-between py-4">
+            {/* Logo Banner (preferido) */}
             <div className="flex items-center gap-3">
               <img
-                src="/images/logo.png"
-                alt="Mission Cleaning Company logo"
-                className="h-10 w-10 rounded-xl object-contain"
+                src="/images/logo-banner.png"
+                onError={(e) => {
+                  // fallback si no existe logo-banner.png
+                  (e.currentTarget as HTMLImageElement).src = "/images/logo.png";
+                }}
+                alt="Mission Cleaning Company"
+                className="h-12 w-auto object-contain sm:h-14"
               />
-              <div className="leading-tight">
-                <p className="text-sm font-semibold tracking-wide text-slate-900">
-                  Mission Cleaning Company
-                </p>
-                <p className="text-xs text-slate-500">
-                  Commercial Kitchen Exhaust Systems • Hoods • Appliances
-                </p>
-              </div>
             </div>
 
             <nav className="hidden items-center gap-6 text-sm text-slate-600 md:flex">
+              <a href="#about" className="hover:text-slate-900">
+                About
+              </a>
               <a href="#services" className="hover:text-slate-900">
                 Services
               </a>
               <a href="#work" className="hover:text-slate-900">
                 Our Work
-              </a>
-              <a href="#about" className="hover:text-slate-900">
-                About
               </a>
               <a href="#contact" className="hover:text-slate-900">
                 Contact
@@ -112,9 +109,8 @@ export default function HomePage() {
                 </a>
               </div>
 
-              {/* Quick trust highlights */}
               <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
-                <StatPill label="Exhaust systems" sub="Hoods • ducts • fans" />
+                <StatPill label="Kitchen hoods" sub="Commercial systems" />
                 <StatPill label="Appliance cleaning" sub="Detail-focused results" />
                 <StatPill label="Safety & compliance" sub="NFPA Code 96 certified" />
               </div>
@@ -125,16 +121,14 @@ export default function HomePage() {
               <div className="relative">
                 <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-3xl bg-slate-300/60 blur-xl" />
                 <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl">
-                  {/* HERO IMAGE */}
                   <div className="h-64 bg-[url('/images/hero-kitchen.jpg')] bg-cover bg-center grayscale sm:h-80" />
 
                   <div className="border-t border-slate-200 bg-white p-4">
                     <div className="flex flex-wrap items-center justify-between gap-3">
                       <div className="flex flex-wrap gap-2">
                         <Badge>Hoods</Badge>
-                        <Badge>Ducts</Badge>
-                        <Badge>Exhaust fans</Badge>
                         <Badge>Appliances</Badge>
+                        <Badge>Inspections</Badge>
                       </div>
 
                       <div className="flex items-center gap-2">
@@ -160,8 +154,8 @@ export default function HomePage() {
                         <div className="flex items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 p-6">
                           <img
                             src="/images/logo.png"
-                            alt="Mission Cleaning Company logo large"
-                            className="h-24 w-auto object-contain grayscale sm:h-28"
+                            alt="Mission Cleaning Company logo"
+                            className="h-20 w-auto object-contain grayscale sm:h-24"
                           />
                         </div>
                       ) : (
@@ -170,17 +164,18 @@ export default function HomePage() {
                             What we do
                           </p>
                           <p className="mt-1 text-xs text-slate-600">
-                            Commercial kitchen exhaust systems and appliances.
+                            Commercial kitchen hood cleaning, appliance cleaning,
+                            and safety inspections.
                           </p>
                           <ul className="mt-3 space-y-1.5 text-xs text-slate-700">
                             <li className="flex items-start gap-2">
-                              <Dot /> Hoods, ductwork & exhaust fans.
+                              <Dot /> Hood cleaning aligned with NFPA Code 96.
                             </li>
                             <li className="flex items-start gap-2">
-                              <Dot /> Grease removal with safety-first standards.
+                              <Dot /> Appliance cleaning with detail-first results.
                             </li>
                             <li className="flex items-start gap-2">
-                              <Dot /> Work aligned with NFPA Code 96 and local requirements.
+                              <Dot /> On-site inspections for safety & compliance.
                             </li>
                           </ul>
                         </div>
@@ -194,95 +189,8 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* SERVICES */}
-      <section id="services" className="bg-white py-12 md:py-16">
-        <Container>
-          <div className="mb-8 max-w-2xl">
-            <h2 className="text-2xl font-semibold text-slate-900 md:text-3xl">
-              Main Services
-            </h2>
-            <p className="mt-2 text-sm text-slate-600">
-              Commercial kitchen exhaust system cleaning and appliance-focused
-              cleaning, built around safety and consistent results.
-            </p>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-3">
-            <ServiceCard
-              title="Kitchen Exhaust Hood Cleaning"
-              description="Professional hood cleaning with detail-focused results."
-              bullets={[
-                "Hoods and canopy areas",
-                "Grease removal and cleanup",
-                "Safety-first service standards",
-              ]}
-            />
-            <ServiceCard
-              title="Exhaust System Cleaning"
-              description="Cleaning for the full exhaust path to support safer operation."
-              bullets={[
-                "Ductwork and access areas",
-                "Exhaust fan cleaning",
-                "Inspection-ready cleanliness",
-              ]}
-            />
-            <ServiceCard
-              title="Appliance Cleaning"
-              description="Commercial kitchen appliances cleaned with a higher standard of detail."
-              bullets={[
-                "Ranges, fryers, ovens, surfaces",
-                "High-contact areas",
-                "Consistent, repeatable process",
-              ]}
-            />
-          </div>
-
-          <div className="mt-10 rounded-2xl border border-slate-200 bg-slate-50 p-6">
-            <p className="text-sm text-slate-700">
-              We work in accordance with NFPA Code 96 and local requirements.
-              Our ultimate goal is the safety and security of your customers,
-              staff, and business.
-            </p>
-          </div>
-        </Container>
-      </section>
-
-      {/* OUR WORK */}
-      <section
-        id="work"
-        className="border-t border-slate-200 bg-white py-12 md:py-16"
-      >
-        <Container>
-          <div className="mb-8 max-w-2xl">
-            <h2 className="text-2xl font-semibold text-slate-900 md:text-3xl">
-              Our Work
-            </h2>
-            <p className="mt-2 text-sm text-slate-600">
-              Examples of commercial kitchen exhaust and appliance cleaning.
-            </p>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-2">
-            {/* USE ONLY CLEAN/OWNED IMAGES */}
-            <WorkCard
-              imgSrc="/images/work-1.jpeg"
-              title="Hood & Line Cleaning"
-              desc="Professional results focused on safety and consistency."
-            />
-            <WorkCard
-              imgSrc="/images/work-2.jpeg"
-              title="Exhaust System Service"
-              desc="Detail-focused service aligned with local requirements."
-            />
-          </div>
-        </Container>
-      </section>
-
-      {/* ABOUT (texts EXACTOS) */}
-      <section
-        id="about"
-        className="border-t border-slate-200 bg-slate-50 py-12 md:py-16"
-      >
+      {/* ABOUT (moved up) */}
+      <section id="about" className="bg-white py-12 md:py-16">
         <Container>
           <div className="grid gap-8 md:grid-cols-2 md:items-start">
             <div>
@@ -309,14 +217,95 @@ export default function HomePage() {
                 description="Fire-safety focused service aligned with local requirements."
               />
               <FeatureItem
-                title="Specialized commercial cleaning"
-                description="Exhaust systems, hoods, and appliance cleaning for commercial kitchens."
-              />
-              <FeatureItem
                 title="Insured"
                 description="Professional, reliable service you can trust."
               />
+              <FeatureItem
+                title="Safety first"
+                description="Focused on reducing risk and supporting compliance."
+              />
             </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* SERVICES (updated) */}
+      <section
+        id="services"
+        className="border-t border-slate-200 bg-slate-50 py-12 md:py-16"
+      >
+        <Container>
+          <div className="mb-8 max-w-2xl">
+            <h2 className="text-2xl font-semibold text-slate-900 md:text-3xl">
+              Main Services
+            </h2>
+            <p className="mt-2 text-sm text-slate-600">
+              Commercial kitchen services built around safety and consistent results.
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            <ServiceCard
+              title="Kitchen Exhaust Hood Cleaning"
+              description="Professional hood cleaning with detail-focused results."
+              bullets={[
+                "Hoods and canopy areas",
+                "Grease removal and cleanup",
+                "Safety-first service standards",
+              ]}
+            />
+
+            {/* Removed Exhaust System Cleaning */}
+
+            <ServiceCard
+              title="Safety & Compliance Inspections"
+              description="On-site inspection of new and existing commercial kitchen exhaust systems to ensure safety and compliance in accordance with NFPA Code 96."
+              bullets={[
+                "On-site safety review",
+                "Compliance-focused inspection",
+                "Recommendations and next steps",
+              ]}
+            />
+
+            <ServiceCard
+              title="Appliance Cleaning"
+              description="Commercial kitchen appliances cleaned with a higher standard of detail."
+              bullets={[
+                "Ranges, fryers, ovens, surfaces",
+                "High-contact areas",
+                "Consistent, repeatable process",
+              ]}
+            />
+          </div>
+
+          <div className="mt-10 rounded-2xl border border-slate-200 bg-white p-6">
+            <p className="text-sm text-slate-700">
+              We work in accordance with NFPA Code 96 and local requirements.
+              Our ultimate goal is the safety and security of your customers,
+              staff, and business.
+            </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* OUR WORK (no text blocks under pictures) */}
+      <section
+        id="work"
+        className="border-t border-slate-200 bg-white py-12 md:py-16"
+      >
+        <Container>
+          <div className="mb-8 max-w-2xl">
+            <h2 className="text-2xl font-semibold text-slate-900 md:text-3xl">
+              Our Work
+            </h2>
+            <p className="mt-2 text-sm text-slate-600">
+              Examples of our work.
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2">
+            <WorkImageOnly imgSrc="/images/work-1.jpeg" />
+            <WorkImageOnly imgSrc="/images/work-2.jpeg" />
           </div>
         </Container>
       </section>
@@ -356,18 +345,6 @@ export default function HomePage() {
                 <p>
                   <span className="font-semibold">Service area:</span> New Jersey and surrounding areas.
                 </p>
-              </div>
-
-              <div className="mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-5">
-                <p className="text-sm font-semibold text-slate-900">
-                  What to include in your request:
-                </p>
-                <ul className="mt-2 space-y-1 text-xs text-slate-600">
-                  <li>• Business name & location</li>
-                  <li>• Hood / duct / fan cleaning request</li>
-                  <li>• Appliance cleaning (if needed)</li>
-                  <li>• Preferred date range / inspection deadlines</li>
-                </ul>
               </div>
             </div>
 
@@ -460,7 +437,7 @@ export default function HomePage() {
                     className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:border-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-900"
                   >
                     <option>Kitchen exhaust hood cleaning</option>
-                    <option>Exhaust system cleaning (ductwork/fans)</option>
+                    <option>Safety & compliance inspections</option>
                     <option>Appliance cleaning</option>
                     <option>Other</option>
                   </select>
@@ -508,11 +485,6 @@ export default function HomePage() {
                   {statusCopy}
                 </div>
               )}
-
-              <p className="text-xs text-slate-500">
-                By submitting this form you agree to be contacted about your
-                cleaning request. No spam, ever.
-              </p>
             </form>
           </div>
         </Container>
@@ -599,26 +571,10 @@ function ServiceCard({
   );
 }
 
-function WorkCard({
-  imgSrc,
-  title,
-  desc,
-}: {
-  imgSrc: string;
-  title: string;
-  desc: string;
-}) {
+function WorkImageOnly({ imgSrc }: { imgSrc: string }) {
   return (
     <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-      <img
-        src={imgSrc}
-        alt={title}
-        className="h-72 w-full object-cover grayscale"
-      />
-      <div className="border-t border-slate-200 p-4">
-        <p className="text-sm font-semibold text-slate-900">{title}</p>
-        <p className="mt-1 text-xs text-slate-500">{desc}</p>
-      </div>
+      <img src={imgSrc} alt="Work photo" className="h-72 w-full object-cover grayscale" />
     </div>
   );
 }
