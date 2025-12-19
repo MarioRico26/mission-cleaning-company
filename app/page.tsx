@@ -1,3 +1,4 @@
+//mission-cleaning/app/page.tsx:
 "use client";
 
 import { useMemo, useState } from "react";
@@ -215,7 +216,7 @@ export default function HomePage() {
 
               <p className="mt-2 text-sm text-slate-600">
                 We look forward to the opportunity to meet and exceed your
-                expectations with our impeccable service.
+                expectations.
               </p>
             </div>
 
@@ -304,7 +305,6 @@ export default function HomePage() {
             <h2 className="text-2xl font-semibold text-slate-900 md:text-3xl">
               Our Work
             </h2>
-            <p className="mt-2 text-sm text-slate-600">Examples of our work.</p>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2">
@@ -326,7 +326,7 @@ export default function HomePage() {
                 Request a free estimate
               </h2>
               <p className="mt-2 text-sm text-slate-600">
-                Tell us what you need and we&apos;ll respond with a free, no-obligation estimate.
+                Tell us what you need and we will respond to set up a free, no-obligation estimate.
               </p>
 
               {/* Aquí dejamos el teléfono solo una vez, con estilo, y listo */}
